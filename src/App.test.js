@@ -13,9 +13,9 @@ test('renders the group number', () => {
   expect(group).toBeInTheDocument();
 });
 
-test('renders team member name Tom', () => {
+test('renders team member name Mo', () => {
   render(<App />);
-  const member = screen.getByText(/Tom/i);
+  const member = screen.getByText(/Mo/i);
   expect(member).toBeInTheDocument();
 });
 
