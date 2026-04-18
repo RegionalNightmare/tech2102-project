@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME      = 'tech2102-group2'
         IMAGE_TAG       = 'latest'
         CONTAINER_NAME  = 'tech2102-group2-container'
-        HOST_PORT       = '3000'
+        HOST_PORT       = '3001'
         CONTAINER_PORT  = '3000'
         CI              = 'true'
     }
@@ -52,14 +52,14 @@ pipeline {
                 echo '==> Removing previous container (if any) and starting a new one'
                 sh 'docker rm -f $CONTAINER_NAME || true'
                 sh 'docker run -d --name $CONTAINER_NAME -p $HOST_PORT:$CONTAINER_PORT $IMAGE_NAME:$IMAGE_TAG'
-                echo '==> Container running. Open http://localhost:3000 in your browser.'
+                echo '==> Container running. Open http://localhost:3001 in your browser.'
             }
         }
     }
 
     post {
         success {
-            echo 'SUCCESS: Pipeline finished. App is live at http://localhost:3000'
+            echo 'SUCCESS: Pipeline finished. App is live at http://localhost:3001'
         }
         failure {
             echo 'FAILURE: Pipeline failed. Check console output above.'
