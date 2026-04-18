@@ -19,8 +19,10 @@ pipeline {
                 }
             }
             steps {
-                echo '==> Installing dependencies (npm install)'
+                echo '==> Cleaning old node_modules and installing fresh'
+                sh 'rm -rf node_modules package-lock.json'
                 sh 'npm install'
+                sh 'chmod -R +x node_modules/.bin || true'
             }
         }
 
@@ -33,7 +35,8 @@ pipeline {
             }
             steps {
                 echo '==> Running unit tests (App.test.js)'
-                sh 'npm test -- --watchAll=false'
+                sh 'chmod -R +x node_modules/.bin || true'
+                sh 'npx react-scripts test --watchAll=false'
             }
         }
 
